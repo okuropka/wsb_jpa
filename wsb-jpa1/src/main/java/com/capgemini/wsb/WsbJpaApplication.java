@@ -10,3 +10,5 @@ public class WsbJpaApplication {
 		SpringApplication.run(WsbJpaApplication.class, args);
 	}
 }
+
+// edit
