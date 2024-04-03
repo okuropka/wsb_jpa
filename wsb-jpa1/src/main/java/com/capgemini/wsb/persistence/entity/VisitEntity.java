@@ -1,6 +1,9 @@
 package com.capgemini.wsb.persistence.entity;
 
+import com.capgemini.wsb.persistence.enums.TreatmentType;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -17,9 +20,13 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DOCTOR_ID")
+	@ManyToOne
 	private DoctorEntity doctorEntity;
+
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id")
+	//@Enumerated
+	private List<TreatmentType> treatmentTypes;
 
 	public Long getId() {
 		return id;
