@@ -20,13 +20,19 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
+	// relacja dwustronna
 	@ManyToOne
 	private DoctorEntity doctorEntity;
 
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id")
-	//@Enumerated
-	private List<TreatmentType> treatmentTypes;
+	// relacja jednostronna
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "visit_id")
+	private List<MedicalTreatmentEntity> medicalTreatmentEntity;
+
+	//relacja jednostronna po stronie własciciela(visit)/dziecka(patient)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Patient_Entity_ID")
+	private PatientEntity patientEntity;
 
 	public Long getId() {
 		return id;
