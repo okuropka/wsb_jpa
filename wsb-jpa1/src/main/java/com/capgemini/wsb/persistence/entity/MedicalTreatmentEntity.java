@@ -9,22 +9,20 @@ import javax.persistence.*;
 public class MedicalTreatmentEntity {
 
 	@Id
+	@Column(name = "MEDICAL_TREATMENT_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "DESCRIPTION", nullable = false)
 	private String description;
 
+	@Column(name = "TREATMENT_TYPE")
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId() { return id; }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public void setId(Long id) { this.id = id; }
 
 	public String getDescription() {
 		return description;

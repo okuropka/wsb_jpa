@@ -12,26 +12,29 @@ import javax.persistence.*;
 public class VisitEntity {
 
 	@Id
+	@Column(name = "VISIT_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(nullable = false)
+	@Column(name = "TIME", nullable = false)
 	private LocalDateTime time;
 
 	// relacja dwustronna
 	@ManyToOne
+	@JoinColumn(name = "DOCTOR_ID")
 	private DoctorEntity doctorEntity;
 
 	// relacja jednostronna
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "visit_id")
+	@JoinColumn(name = "MEDICAL_TREATMENT_ID")
 	private List<MedicalTreatmentEntity> medicalTreatmentEntity;
 
 	//relacja jednostronna po stronie własciciela(visit)/dziecka(patient)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Patient_Entity_ID")
+	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patientEntity;
 
 	public Long getId() {

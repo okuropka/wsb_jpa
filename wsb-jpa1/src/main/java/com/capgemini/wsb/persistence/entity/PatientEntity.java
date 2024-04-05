@@ -9,27 +9,31 @@ import javax.persistence.*;
 public class PatientEntity {
 
 	@Id
+	@Column(name = "PATIENT_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@Column(nullable = false)
+	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
+	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
 	// relacja jednostronna po stronie ...
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ADDRESS_ID")
 	private AddressEntity addressEntity;
+
+	@Column(name = "EMAIL")
 	private String email;
 
-	@Column(nullable = false)
+	@Column(name = "PATIENT_NUMBER", nullable = false)
 	private String patientNumber;
 
-	@Column(nullable = false)
+	@Column(name = "DATE_OF_BIRTH", nullable = false)
 	private LocalDate dateOfBirth;
 
 	public Long getId() {

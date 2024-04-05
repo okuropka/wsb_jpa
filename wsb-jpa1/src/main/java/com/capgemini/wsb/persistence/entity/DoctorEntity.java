@@ -1,7 +1,7 @@
 package com.capgemini.wsb.persistence.entity;
 
 import com.capgemini.wsb.persistence.enums.Specialization;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
@@ -9,42 +9,42 @@ import javax.persistence.*;
 public class DoctorEntity {
 
 	@Id
+	@Column(name = "DOCTOR_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	//relacja dwustronna
-	@OneToMany(mappedBy = "id")
-	private List<VisitEntity> visitEntities;
+	@OneToMany
+	@JoinColumn(name = "VISIT_ID")
+	private Collection<VisitEntity> visitEntities;
 
 	// relacja jednostronna po stronie ...
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ADDRESS_ID")
 	private AddressEntity addressEntity;
 
-	@Column(nullable = false)
+	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@Column(nullable = false)
+	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
+	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
+	@Column(name = "EMAIL")
 	private String email;
 
-	@Column(nullable = false)
+	@Column(name = "DOCTOR_NUMBER", nullable = false)
 	private String doctorNumber;
 
-	@Column(nullable = false)
+	@Column(name = "SPECIALIZATION", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId() { return id; }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public void setId(Long id) { this.id = id; }
 
 	public String getFirstName() {
 		return firstName;

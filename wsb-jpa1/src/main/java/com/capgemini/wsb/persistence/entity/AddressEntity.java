@@ -1,25 +1,26 @@
 package com.capgemini.wsb.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ADDRESS")
 public class AddressEntity {
 
 	@Id
+	@Column(name = "ADDRESS_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "CITY")
 	private String city;
 
+	@Column(name = "ADDRESS_LINE_1")
 	private String addressLine1;
 
+	@Column(name = "ADDRESS_LINE_2")
 	private String addressLine2;
 
+	@Column(name = "POSTAL_CODE")
 	private String postalCode;
 
 	public Long getId() {
