@@ -19,6 +19,9 @@ public class PatientEntity {
 	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
+	@Column(name = "IS_WOMAN", nullable = false)
+	private boolean isWoman;
+
 	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
@@ -59,6 +62,10 @@ public class PatientEntity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public boolean getIsWoman() { return isWoman; }
+
+	public void setIsWoman(boolean isWoman) {this.isWoman = isWoman;}
 
 	public String getTelephoneNumber() {
 		return telephoneNumber;

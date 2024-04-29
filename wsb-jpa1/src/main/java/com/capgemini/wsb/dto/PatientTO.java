@@ -15,6 +15,8 @@ public class PatientTO implements Serializable
 
     private String lastName;
 
+    private boolean isWoman;
+
     private String telephoneNumber;
 
     private AddressEntity addressEntity;
@@ -50,6 +52,10 @@ public class PatientTO implements Serializable
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public boolean getIsWoman() { return isWoman; }
+
+    public void setIsWoman(boolean isWoman) {this.isWoman = isWoman;}
 
     public String getTelephoneNumber() {
         return telephoneNumber;

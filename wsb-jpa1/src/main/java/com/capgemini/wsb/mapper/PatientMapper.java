@@ -23,6 +23,7 @@ public final class PatientMapper
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
+        patientTO.setIsWoman(patientEntity.getIsWoman());
 
         return patientTO;
     }
@@ -40,6 +41,7 @@ public final class PatientMapper
         patientEntity.setEmail(patientTO.getEmail());
         patientEntity.setPatientNumber(patientTO.getPatientNumber());
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
+        patientEntity.setIsWoman(patientEntity.getIsWoman());
 
         return patientEntity;
     }
