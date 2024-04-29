@@ -1,7 +1,8 @@
 package com.capgemini.wsb.persistance.dao;
 
-import com.capgemini.wsb.persistence.dao.AddressDao;
-import com.capgemini.wsb.persistence.entity.AddressEntity;
+import com.capgemini.wsb.dto.PatientTO;
+import com.capgemini.wsb.persistence.entity.PatientEntity;
+import com.capgemini.wsb.service.PatientService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,22 +14,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AddressDaoTest
+public class PatientServiceTest
 {
     @Autowired
-    private AddressDao addressDao;
-
+    private PatientService patientService;
+//----------------------------------------------------------------------------------------------------------------------
     @Transactional
     @Test
-    public void testShouldFindAddressById() {
+    public void testShouldRemovePatientAndVisitsButNotDoctor() {
         // given
+        Long id = 1L;
         // when
-        AddressEntity addressEntity = addressDao.findOne(1L);
+        PatientTO patientTO = patientService.findById(id);
         // then
-        assertThat(addressEntity).isNotNull();
-        assertThat(addressEntity.getPostalCode()).isEqualTo("62-030");
+        assertThat(patientService).isNotNull();
+        entityManager.remove(patientTO);
+        assertThat(patientService).isNotNull();
+        assertThat(patientService.getPostalCode()).isEqualTo("62-030");
     }
-
+//----------------------------------------------------------------------------------------------------------------------
     @Test
     public void testShouldSaveAddress() {
         // given
