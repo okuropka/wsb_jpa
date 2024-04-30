@@ -1,14 +1,24 @@
 package com.capgemini.wsb.persistance.dao;
 
 import com.capgemini.wsb.dto.PatientTO;
+import com.capgemini.wsb.dto.VisitTO;
+import com.capgemini.wsb.mapper.PatientMapper;
+import com.capgemini.wsb.mapper.VisitMapper;
+import com.capgemini.wsb.persistence.dao.PatientDao;
+import com.capgemini.wsb.persistence.entity.DoctorEntity;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
+import com.capgemini.wsb.persistence.entity.VisitEntity;
 import com.capgemini.wsb.service.PatientService;
+import com.capgemini.wsb.service.VisitService;
+import com.capgemini.wsb.service.impl.PatientServiceImpl;
+import com.capgemini.wsb.service.impl.VisitServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +27,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PatientServiceTest
 {
     @Autowired
-    private PatientService patientService;
+    private PatientDao patientDao;
+    private final PatientService patientService = new PatientServiceImpl(patientDao);
+    private VisitService visitService = new VisitServiceImpl();
+    private PatientMapper patientMapper;
+    private VisitMapper visitMapper;
+    private VisitEntity visitEntity;
+    private DoctorEntity doctorEntity;
 //----------------------------------------------------------------------------------------------------------------------
     @Transactional
     @Test
@@ -26,11 +42,14 @@ public class PatientServiceTest
         Long id = 1L;
         // when
         PatientTO patientTO = patientService.findById(id);
+        PatientEntity patientEntity = patientMapper.mapToEntity(patientTO);
+        VisitTO visitTO = visitService.findById(id);
+        VisitEntity visitEntity = visitMapper.mapToEntity(visitTO);
         // then
-        assertThat(patientService).isNotNull();
-        entityManager.remove(patientTO);
-        assertThat(patientService).isNotNull();
-        assertThat(patientService.getPostalCode()).isEqualTo("62-030");
+        assertThat(patientEntity).isNotNull();
+        patientService.removePatientEntity(id);
+        assertThat(patientEntity).isNull();
+        assertThat().isNull();
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Test

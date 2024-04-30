@@ -33,7 +33,7 @@ public class VisitEntity {
 	private List<MedicalTreatmentEntity> medicalTreatmentEntity;
 
 	//relacja jednostronna po stronie własciciela(visit)/dziecka(patient)
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patientEntity;
 

@@ -5,4 +5,5 @@ import com.capgemini.wsb.dto.PatientTO;
 public interface PatientService
 {
     PatientTO findById(Long id);
+    void removePatientEntity(long id);
 }
