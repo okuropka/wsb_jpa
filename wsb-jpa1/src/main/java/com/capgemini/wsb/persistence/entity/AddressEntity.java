@@ -23,6 +23,14 @@ public class AddressEntity {
 	@Column(name = "POSTAL_CODE")
 	private String postalCode;
 
+	@Column(name = "ADDRESS_ID")
+	@OneToOne(mappedBy = "DOCTOR_ID")
+	private DoctorEntity doctorEntity;
+
+	@Column(name = "ADDRESS_ID")
+	@OneToOne(mappedBy = "PATIENT_ID")
+	private PatientEntity patientEntity;
+
 	public Long getId() {
 		return id;
 	}

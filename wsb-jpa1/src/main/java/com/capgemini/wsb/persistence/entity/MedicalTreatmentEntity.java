@@ -20,6 +20,10 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
+	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
+	@OneToOne(mappedBy = "MEDICAL_TREATMENT_ID")
+	private VisitEntity visitEntity;
+
 	public Long getId() { return id; }
 
 	public void setId(Long id) { this.id = id; }

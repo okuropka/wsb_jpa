@@ -22,18 +22,18 @@ public class VisitEntity {
 	@Column(name = "TIME", nullable = false)
 	private LocalDateTime time;
 
-	// relacja dwustronna
+	// relacja jednokierunkowa po stronie rodzica(VisitEntity)
 	@ManyToOne
 	@JoinColumn(name = "DOCTOR_ID")
 	private DoctorEntity doctorEntity;
 
-	// relacja jednostronna
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "MEDICAL_TREATMENT_ID")
-	private List<MedicalTreatmentEntity> medicalTreatmentEntity;
+	private MedicalTreatmentEntity medicalTreatmentEntity;
 
-	//relacja jednostronna po stronie własciciela(visit)/dziecka(patient)
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//relacja jednokierunkowa po stronie rodzica(VisitEntity)
+	@ManyToOne //(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patientEntity;
 

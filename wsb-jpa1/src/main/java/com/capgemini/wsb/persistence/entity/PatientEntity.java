@@ -1,6 +1,7 @@
 package com.capgemini.wsb.persistence.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,10 +26,15 @@ public class PatientEntity {
 	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
-	// relacja jednostronna po stronie ...
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	// relacja dwukierunkowa
+	@Column(name = "ADDRESS_ID")
+	@OneToOne(mappedBy ="PATIENT_ID", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ADDRESS_ID")
 	private AddressEntity addressEntity;
+
+	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
+	@OneToMany(mappedBy = "PATIENT_ID", cascade = CascadeType.ALL)
+	private List<VisitEntity> visitEntities;
 
 	@Column(name = "EMAIL")
 	private String email;
