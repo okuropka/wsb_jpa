@@ -27,13 +27,12 @@ public class PatientEntity {
 	private String telephoneNumber;
 
 	// relacja dwukierunkowa
-	@Column(name = "ADDRESS_ID")
-	@OneToOne(mappedBy ="PATIENT_ID", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ADDRESS_ID")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AddressEntity addressEntity;
 
-	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
-	@OneToMany(mappedBy = "PATIENT_ID", cascade = CascadeType.ALL)
+	// relacja dwukierunkowa
+	@Column(name = "VISIT_ID")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<VisitEntity> visitEntities;
 
 	@Column(name = "EMAIL")

@@ -21,7 +21,7 @@ public class MedicalTreatmentEntity {
 	private TreatmentType type;
 
 	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
-	@OneToOne(mappedBy = "MEDICAL_TREATMENT_ID")
+		@ManyToOne(cascade = CascadeType.REMOVE)
 	private VisitEntity visitEntity;
 
 	public Long getId() { return id; }

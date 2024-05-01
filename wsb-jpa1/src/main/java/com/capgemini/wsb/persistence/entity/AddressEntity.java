@@ -23,12 +23,12 @@ public class AddressEntity {
 	@Column(name = "POSTAL_CODE")
 	private String postalCode;
 
-	@Column(name = "ADDRESS_ID")
-	@OneToOne(mappedBy = "DOCTOR_ID")
+	// relacja dwukierunkowa
+	@OneToOne
 	private DoctorEntity doctorEntity;
 
-	@Column(name = "ADDRESS_ID")
-	@OneToOne(mappedBy = "PATIENT_ID")
+	// relacja dwukierunkowa
+	@OneToOne
 	private PatientEntity patientEntity;
 
 	public Long getId() {

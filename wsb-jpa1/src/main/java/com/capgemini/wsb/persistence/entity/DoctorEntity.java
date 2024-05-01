@@ -1,7 +1,10 @@
 package com.capgemini.wsb.persistence.entity;
 
 import com.capgemini.wsb.persistence.enums.Specialization;
+import net.bytebuddy.agent.builder.AgentBuilder;
+
 import java.util.Collection;
+import java.util.List;
 import javax.lang.model.element.Name;
 import javax.persistence.*;
 
@@ -14,16 +17,12 @@ public class DoctorEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	//relacja jednokierunkowa po stronie rodzica(VisitEntity)
-	@Column(name = "VISIT_ID")
-	@OneToMany(mappedBy = "DOCTOR_ID", cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "VISIT_ID")
-	private Collection<VisitEntity> visitEntities;
+	//relacja dwukierunkowa
+	@OneToMany(cascade = CascadeType.REMOVE)
+	private List<VisitEntity> visitEntities;
 
 	// relacja dwukierunkowa
-	@Column(name = "ADDRESS_ID")
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ADDRESS_ID")
 	private AddressEntity addressEntity;
 
 	@Column(name = "FIRST_NAME", nullable = false)

@@ -33,22 +33,22 @@ CREATE TABLE Patient (
                          FOREIGN KEY (address_id) REFERENCES Address(id)
 );
 
+CREATE TABLE MedicalTreatment (
+                                  id INT PRIMARY KEY,
+                                  treatment_description VARCHAR(255),
+                                  type VARCHAR(100)
+);
+
 CREATE TABLE Visit (
                        id INT PRIMARY KEY,
-                       description VARCHAR(255),
+                       visit_description VARCHAR(255),
                        time TIMESTAMP,
                        doctor_id INT,
                        patient_id INT,
+                       medical_treatment_id int,
                        FOREIGN KEY (doctor_id) REFERENCES Doctor(id),
-                       FOREIGN KEY (patient_id) REFERENCES Patient(id)
-);
-
-CREATE TABLE MedicalTreatment (
-                                  id INT PRIMARY KEY,
-                                  description VARCHAR(255),
-                                  type VARCHAR(100),
-                                  visit_id INT,
-                                  FOREIGN KEY (visit_id) REFERENCES Visit(id)
+                       FOREIGN KEY (patient_id) REFERENCES Patient(id),
+                       FOREIGN KEY (medical_treatment_id) REFERENCES MedicalTreatment(id)
 );
 
 insert into address (id, addressLine1, addressLine2, city, postalCode)
@@ -63,9 +63,13 @@ insert into patient (id, firstName, lastName, isWoman, dateOfBirth, telephoneNum
             values (1, 'imiePacjenta', 'nazwiskoPacjenta', 0, '2024-04-05', '333999666', 'inspicjentKowalski@pochtah.pl', '12745', 1);
 insert into patient (id, firstName, lastName, isWoman, dateOfBirth, telephoneNumber, email, patientNumber, address_id)
             values (2, 'imiePacjenta2', 'nazwiskoPacjenta2', 1, '1999-04-05', '999333666', 'pacjent2@200ml.pl', '11111', 3);
-insert into visit (id, description, time, doctor_id, patient_id)
-            values (1, 'zabieg', '2024-04-05', 1, 1);
-insert into visit (id, description, time, doctor_id, patient_id)
-            values (2, 'recepta', '2024-04-05', 1, 2);
-insert into medicalTreatment (id, description, type, visit_id)
-            values (1, 'amputacja rogoowki', 'RTG', 1);
+insert into medicalTreatment (id, treatment_description, type)
+            values (1, 'amputacja rogoowki', 'RTG');
+insert into medicalTreatment (id, treatment_description, type)
+            values (2, 'Podanie syropku na kaszel', 'podanie leku');
+insert into visit (id, visit_description, time, doctor_id, patient_id, medical_treatment_id)
+            values (1, 'zabieg', '2024-04-05', 1, 1, 2);
+insert into visit (id, visit_description, time, doctor_id, patient_id, medical_treatment_id)
+            values (2, 'operacja', '2024-04-07', 1, 2, 1);
+insert into visit (id, visit_description, time, doctor_id, patient_id, medical_treatment_id)
+            values (3, 'zabieg', '2022-04-05', 1, 1, 2);
