@@ -1,7 +1,9 @@
 package com.capgemini.wsb.service;
 
+import com.capgemini.wsb.persistence.dao.impl.PatientDaoImpl;
 import com.capgemini.wsb.service.PatientService;
 import com.capgemini.wsb.dto.*;
+import com.capgemini.wsb.service.impl.PatientServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +18,7 @@ import static org.junit.Assert.*;
 public class PatientServiceTest {
 
     @Autowired
-    private PatientService patientService;
+    private PatientService patientService = new PatientServiceImpl(new PatientDaoImpl());
 
     @Test
     public void FindById() {
@@ -53,7 +55,7 @@ public class PatientServiceTest {
         patientTO.setFirstName("Al");
         patientTO.setLastName("Le Luja");
         patientTO.setTelephoneNumber("126547777");
-        patientTO.setEmail("PraiseThe@Lord.com");
+        patientTO.setEmail("PraiseTheLord@church.com");
         patientTO.setPatientNumber("111");
         patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
         patientTO.setIsWoman(false);
