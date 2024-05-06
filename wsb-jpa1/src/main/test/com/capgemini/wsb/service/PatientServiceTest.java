@@ -1,22 +1,14 @@
 package com.capgemini.wsb.service;
 
+import com.capgemini.wsb.service.PatientService;
 import com.capgemini.wsb.dto.*;
-import com.capgemini.wsb.mapper.AddressMapper;
-import com.capgemini.wsb.mapper.PatientMapper;
-import com.capgemini.wsb.mapper.VisitMapper;
-import com.capgemini.wsb.persistence.dao.PatientDao;
-import com.capgemini.wsb.persistence.entity.VisitEntity;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -27,14 +19,14 @@ public class PatientServiceTest {
     private PatientService patientService;
 
     @Test
-    public void testFindById() {
+    public void FindById() {
         PatientTO patientTO = patientService.findById(1L);
 
         assertEquals("imiePacjenta", patientTO.getFirstName());
         assertEquals("nazwiskoPacjenta", patientTO.getLastName());
     }
     @Test
-    public void testAddPatient() {
+    public void AddPatient() {
         // given
         PatientTO patientTO = new PatientTO();
         patientTO.setFirstName("Al");
@@ -55,7 +47,7 @@ public class PatientServiceTest {
     }
 
     @Test
-    public void testRemovePatient() {
+    public void RemovePatient() {
         // given
         PatientTO patientTO = new PatientTO();
         patientTO.setFirstName("Al");
@@ -77,7 +69,7 @@ public class PatientServiceTest {
     }
 
     @Test
-    public void testGetAllVisitsForPatient(){
+    public void GetAllVisitsForPatient(){
         // given
         PatientTO patientTO = new PatientTO();
         patientTO.setFirstName("Al");
