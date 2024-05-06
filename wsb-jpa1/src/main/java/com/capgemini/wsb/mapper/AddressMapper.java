@@ -2,6 +2,7 @@ package com.capgemini.wsb.mapper;
 
 import com.capgemini.wsb.dto.AddressTO;
 import com.capgemini.wsb.persistence.entity.AddressEntity;
+import com.capgemini.wsb.persistence.entity.PatientEntity;
 
 public final class AddressMapper
 {
@@ -18,6 +19,8 @@ public final class AddressMapper
         addressTO.setAddressLine2(addressEntity.getAddressLine2());
         addressTO.setCity(addressEntity.getCity());
         addressTO.setPostalCode(addressEntity.getPostalCode());
+        addressTO.setDoctorTO( DoctorMapper.mapToTO(addressEntity.getDoctorEntity()) );
+        addressTO.setPatientTO( PatientMapper.mapToTO(addressEntity.getPatientEntity()) );
         return addressTO;
     }
 
@@ -33,6 +36,8 @@ public final class AddressMapper
         addressEntity.setAddressLine2(addressTO.getAddressLine2());
         addressEntity.setCity(addressTO.getCity());
         addressEntity.setPostalCode(addressTO.getPostalCode());
+        addressEntity.setDoctorEntity( DoctorMapper.mapToEntity(addressTO.getDoctorTO()) );
+        addressEntity.setPatientEntity( PatientMapper.mapToEntity(addressTO.getPatientTO()) );
         return addressEntity;
     }
 }

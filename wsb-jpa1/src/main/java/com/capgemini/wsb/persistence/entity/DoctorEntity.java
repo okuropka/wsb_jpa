@@ -18,7 +18,7 @@ public class DoctorEntity {
 	private Long id;
 
 	//relacja dwukierunkowa
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "doctorEntity", cascade = CascadeType.REMOVE)
 	private List<VisitEntity> visitEntities;
 
 	// relacja dwukierunkowa
@@ -95,5 +95,13 @@ public class DoctorEntity {
 	public void setSpecialization(Specialization specialization) {
 		this.specialization = specialization;
 	}
+
+	public AddressEntity getAddressEntity() { return addressEntity; }
+
+	public void setAddressEntity(AddressEntity addressEntity) { this.addressEntity = addressEntity; }
+
+	public List<VisitEntity> getVisitEntities() { return visitEntities; }
+
+	public void setVisitEntities(List<VisitEntity> visitEntities) { this.visitEntities = visitEntities; }
 
 }

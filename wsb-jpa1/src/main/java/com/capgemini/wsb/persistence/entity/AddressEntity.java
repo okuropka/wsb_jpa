@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class AddressEntity {
 
 	@Id
-	@Column(name = "ADDRESS_ID")
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -24,11 +24,11 @@ public class AddressEntity {
 	private String postalCode;
 
 	// relacja dwukierunkowa
-	@OneToOne
+	@OneToOne(mappedBy = "addressEntity")
 	private DoctorEntity doctorEntity;
 
 	// relacja dwukierunkowa
-	@OneToOne
+	@OneToOne(mappedBy = "addressEntity")
 	private PatientEntity patientEntity;
 
 	public Long getId() {
@@ -51,24 +51,21 @@ public class AddressEntity {
 		return addressLine1;
 	}
 
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
-	}
+	public void setAddressLine1(String addressLine1) { this.addressLine1 = addressLine1; }
 
-	public String getAddressLine2() {
-		return addressLine2;
-	}
+	public String getAddressLine2() { return addressLine2; }
 
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
-	}
+	public void setAddressLine2(String addressLine2) { this.addressLine2 = addressLine2; }
 
-	public String getPostalCode() {
-		return postalCode;
-	}
+	public String getPostalCode() {	return postalCode; }
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
+	public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
 
+	public DoctorEntity getDoctorEntity() { return doctorEntity; }
+
+	public void setDoctorEntity(DoctorEntity doctorEntity) { this.doctorEntity = doctorEntity; }
+
+	public PatientEntity getPatientEntity() { return patientEntity; }
+
+	public void setPatientEntity(PatientEntity patientEntity) { this.patientEntity = patientEntity; }
 }

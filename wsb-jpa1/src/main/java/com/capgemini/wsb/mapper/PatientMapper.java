@@ -6,6 +6,7 @@ import com.capgemini.wsb.persistence.entity.AddressEntity;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
 
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public final class PatientMapper
 {
@@ -24,6 +25,8 @@ public final class PatientMapper
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setIsWoman(patientEntity.getIsWoman());
+        patientTO.setAddressTO( AddressMapper.mapToTO(patientEntity.getAddressEntity()) );
+        patientTO.setVisitTOs(patientEntity.getVisitEntities().stream().map(VisitMapper::mapToTO).collect(Collectors.toList()));
 
         return patientTO;
     }
@@ -41,7 +44,9 @@ public final class PatientMapper
         patientEntity.setEmail(patientTO.getEmail());
         patientEntity.setPatientNumber(patientTO.getPatientNumber());
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
-        patientEntity.setIsWoman(patientEntity.getIsWoman());
+        patientEntity.setIsWoman(patientTO.getIsWoman());
+        patientEntity.setAddressEntity( AddressMapper.mapToEntity(patientTO.getAddressTO()) );
+        patientEntity.setVisitEntities(patientTO.getVisitTOs().stream().map(VisitMapper::mapToEntity).collect(Collectors.toList()));
 
         return patientEntity;
     }

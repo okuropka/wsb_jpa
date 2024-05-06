@@ -12,11 +12,11 @@ import javax.persistence.*;
 public class VisitEntity {
 
 	@Id
-	@Column(name = "VISIT_ID")
+	@Column(name = "VISIT_ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION", nullable = false)
 	private String description;
 
 	@Column(name = "TIME", nullable = false)
@@ -28,8 +28,7 @@ public class VisitEntity {
 	private DoctorEntity doctorEntity;
 
 	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
-	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "MEDICAL_TREATMENT_ID")
+	@OneToMany(mappedBy = "visitEntity", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private List<MedicalTreatmentEntity> medicalTreatmentEntities;
 
 	//relacja dwukierunkowa
@@ -37,13 +36,9 @@ public class VisitEntity {
 	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patientEntity;
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId() { return id; }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public void setId(Long id) { this.id = id; }
 
 	public String getDescription() {
 		return description;
@@ -61,4 +56,15 @@ public class VisitEntity {
 		this.time = time;
 	}
 
+	public PatientEntity getPatient() { return patientEntity; }
+
+	public void setPatient(PatientEntity patientEntity) { this.patientEntity = patientEntity; }
+
+	public DoctorEntity getDoctor() { return doctorEntity; }
+
+	public void setDoctor(DoctorEntity doctorEntity) { this.doctorEntity = doctorEntity; }
+
+	public List<MedicalTreatmentEntity> getMedicalTreatments() { return medicalTreatmentEntities; }
+
+	public void setMedicalTreatments(List<MedicalTreatmentEntity> medicalTreatmentEntities) { this.medicalTreatmentEntities = medicalTreatmentEntities; }
 }

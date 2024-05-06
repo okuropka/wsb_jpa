@@ -27,8 +27,5 @@ public class DoctorServiceImpl implements DoctorService
         final DoctorEntity entity = doctorDao.findOne(id);
         return DoctorMapper.mapToTO(entity);
     }
-    @Override
-    public void removeDoctorEntity(long id){
-        doctorDao.delete(id);
-    }
+
 }

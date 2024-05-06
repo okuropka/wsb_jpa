@@ -32,7 +32,7 @@ public class PatientEntity {
 
 	// relacja dwukierunkowa
 	@Column(name = "VISIT_ID")
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "patientEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<VisitEntity> visitEntities;
 
 	@Column(name = "EMAIL")
@@ -104,4 +104,11 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public AddressEntity getAddressEntity() { return addressEntity; }
+
+	public void setAddressEntity(AddressEntity addressEntity) { this.addressEntity = addressEntity; }
+
+	public List<VisitEntity> getVisitEntities() { return visitEntities; }
+
+	public void setVisitEntities(List<VisitEntity> visitEntities) { this.visitEntities = visitEntities; }
 }

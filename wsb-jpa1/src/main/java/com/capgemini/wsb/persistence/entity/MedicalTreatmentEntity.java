@@ -21,7 +21,8 @@ public class MedicalTreatmentEntity {
 	private TreatmentType type;
 
 	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
-		@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "VISIT_ID")
 	private VisitEntity visitEntity;
 
 	public Long getId() { return id; }
@@ -44,4 +45,7 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
+	public VisitEntity getVisitEntity() { return visitEntity; }
+
+	public void setVisitEntity(VisitEntity visitEntity) { this.visitEntity = visitEntity; }
 }
