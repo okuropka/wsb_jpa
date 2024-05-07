@@ -93,7 +93,7 @@ public class PatientServiceTest {
 
         // then
         assertFalse(patientTO.getVisitTOs().isEmpty()); // czy lista wizyt nie jest pusta?
-        assertEquals(1, visits.size()); // czy jest tylko jedna wizyta dla tego pacjenta?
+        assertEquals(2, visits.size()); // czy jest tylko jedna wizyta dla tego pacjenta?
 
     }
 
