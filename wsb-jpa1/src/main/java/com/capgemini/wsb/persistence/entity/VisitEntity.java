@@ -56,13 +56,13 @@ public class VisitEntity {
 		this.time = time;
 	}
 
-	public PatientEntity getPatient() { return patientEntity; }
+	public PatientEntity getPatientEntity() { return patientEntity; }
 
-	public void setPatient(PatientEntity patientEntity) { this.patientEntity = patientEntity; }
+	public void setPatientEntity(PatientEntity patientEntity) { this.patientEntity = patientEntity; }
 
-	public DoctorEntity getDoctor() { return doctorEntity; }
+	public DoctorEntity getDoctorEntity() { return doctorEntity; }
 
-	public void setDoctor(DoctorEntity doctorEntity) { this.doctorEntity = doctorEntity; }
+	public void setDoctorEntity(DoctorEntity doctorEntity) { this.doctorEntity = doctorEntity; }
 
 	public List<MedicalTreatmentEntity> getMedicalTreatments() { return medicalTreatmentEntities; }
 
