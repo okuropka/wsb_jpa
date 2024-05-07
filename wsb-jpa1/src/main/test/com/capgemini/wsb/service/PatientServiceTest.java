@@ -43,22 +43,7 @@ public class PatientServiceTest {
         addressTO.setId(101L);
         patientTO.setAddressTO(addressTO);
 
-        DoctorTO doctorTO = new DoctorTO();
-        doctorTO.setId(555L);
-
         List<VisitTO> visitTOs = new ArrayList<>();
-        VisitTO visit = new VisitTO();
-
-        List<MedicalTreatmentTO> medicalTreatmentTOs = new ArrayList<>();
-        MedicalTreatmentTO medicalTreatmentTO = new MedicalTreatmentTO();
-        medicalTreatmentTOs.add(medicalTreatmentTO);
-
-        visit.setId(111L);
-        visit.setPatientTO(patientTO);
-        visit.setDoctorTO(doctorTO);
-        visit.setMedicalTreatments(medicalTreatmentTOs);
-        visitTOs.add(visit);
-
         patientTO.setVisitTOs(visitTOs);
 
         // when
@@ -86,23 +71,9 @@ public class PatientServiceTest {
         addressTO.setId(101L);
         patientTO.setAddressTO(addressTO);
 
-        DoctorTO doctorTO = new DoctorTO();
-        doctorTO.setId(555L);
-
         List<VisitTO> visitTOs = new ArrayList<>();
-        VisitTO visit = new VisitTO();
-
-        List<MedicalTreatmentTO> medicalTreatmentTOs = new ArrayList<>();
-        MedicalTreatmentTO medicalTreatmentTO = new MedicalTreatmentTO();
-        medicalTreatmentTOs.add(medicalTreatmentTO);
-
-        visit.setId(111L);
-        visit.setPatientTO(patientTO);
-        visit.setDoctorTO(doctorTO);
-        visit.setMedicalTreatments(medicalTreatmentTOs);
-        visitTOs.add(visit);
-
         patientTO.setVisitTOs(visitTOs);
+
         PatientTO savedPatientTO = patientService.addPatient(patientTO);
         Long patientId = savedPatientTO.getId();
 
@@ -116,45 +87,13 @@ public class PatientServiceTest {
     @Test
     public void GetAllVisitsForPatient(){
         // given
-        PatientTO patientTO = new PatientTO();
-        patientTO.setFirstName("Al");
-        patientTO.setLastName("Le Luja");
-        patientTO.setTelephoneNumber("126547777");
-        patientTO.setEmail("PraiseTheLord@church.com");
-        patientTO.setPatientNumber("111");
-        patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
-        patientTO.setIsWoman(false);
-
-        AddressTO addressTO = new AddressTO();
-        addressTO.setId(101L);
-        patientTO.setAddressTO(addressTO);
-
-        DoctorTO doctorTO = new DoctorTO();
-        doctorTO.setId(555L);
-
-        List<VisitTO> visitTOs = new ArrayList<>();
-        VisitTO visit = new VisitTO();
-
-        List<MedicalTreatmentTO> medicalTreatmentTOs = new ArrayList<>();
-        MedicalTreatmentTO medicalTreatmentTO = new MedicalTreatmentTO();
-        medicalTreatmentTOs.add(medicalTreatmentTO);
-
-        visit.setId(111L);
-        visit.setPatientTO(patientTO);
-        visit.setDoctorTO(doctorTO);
-        visit.setMedicalTreatments(medicalTreatmentTOs);
-        visitTOs.add(visit);
-
-        patientTO.setVisitTOs(visitTOs);
-        PatientTO savedPatientTO = patientService.addPatient(patientTO);
-        Long patientId = savedPatientTO.getId();
-
+        PatientTO patientTO = patientService.findById(1L);
         // when
-        List<VisitTO> visits2 = patientService.getAllVisitsForPatient(patientId);
+        List<VisitTO> visits = patientService.getAllVisitsForPatient(1L);
 
         // then
-        assertFalse(visitTOs.isEmpty()); // czy lista wizyt nie jest pusta?
-        assertEquals(1, visits2.size()); // czy jest tylko jedna wizyta dla tego pacjenta?
+        assertFalse(patientTO.getVisitTOs().isEmpty()); // czy lista wizyt nie jest pusta?
+        assertEquals(1, visits.size()); // czy jest tylko jedna wizyta dla tego pacjenta?
 
     }
 
