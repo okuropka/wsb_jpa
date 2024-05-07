@@ -5,7 +5,7 @@ import com.capgemini.wsb.persistence.enums.TreatmentType;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "MEDICAL_TREATMENT")
+@Table(name = "MEDICALTREATMENT")
 public class MedicalTreatmentEntity {
 
 	@Id

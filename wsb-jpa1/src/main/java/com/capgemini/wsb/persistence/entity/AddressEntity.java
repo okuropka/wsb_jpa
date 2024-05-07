@@ -7,20 +7,20 @@ import javax.persistence.*;
 public class AddressEntity {
 
 	@Id
-	//@Column(name = "id")
+	@Column(name = "id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	//@Column(name = "addressLine1")
+	@Column(name = "addressLine1", nullable = false)
 	private String addressLine1;
 
-	//@Column(name = "addressLine2")
+	@Column(name = "addressLine2", nullable = false)
 	private String addressLine2;
 
-	//@Column(name = "city")
+	@Column(name = "city", nullable = false)
 	private String city;
 
-	//@Column(name = "postalCode")
+	@Column(name = "postalCode", nullable = false)
 	private String postalCode;
 
 	// relacja dwukierunkowa

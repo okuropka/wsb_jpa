@@ -4,7 +4,11 @@
     <data-source name="test" uuid="acb44da7-9667-4f79-b5db-c65654c0a54f">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" />
       <user-name>sa</user-name>
-      <schema-mapping />
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" negative="1" />
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>
