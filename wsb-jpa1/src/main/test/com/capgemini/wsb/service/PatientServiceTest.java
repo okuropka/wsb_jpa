@@ -54,8 +54,8 @@ public class PatientServiceTest {
         medicalTreatmentTOs.add(medicalTreatmentTO);
 
         visit.setId(111L);
-        visit.setPatientId(patientTO.getId());
-        visit.setDoctorId(doctorTO.getId());
+        visit.setPatientTO(patientTO);
+        visit.setDoctorTO(doctorTO);
         visit.setMedicalTreatments(medicalTreatmentTOs);
         visitTOs.add(visit);
 
@@ -97,8 +97,8 @@ public class PatientServiceTest {
         medicalTreatmentTOs.add(medicalTreatmentTO);
 
         visit.setId(111L);
-        visit.setPatientId(patientTO.getId());
-        visit.setDoctorId(doctorTO.getId());
+        visit.setPatientTO(patientTO);
+        visit.setDoctorTO(doctorTO);
         visit.setMedicalTreatments(medicalTreatmentTOs);
         visitTOs.add(visit);
 
@@ -140,8 +140,8 @@ public class PatientServiceTest {
         medicalTreatmentTOs.add(medicalTreatmentTO);
 
         visit.setId(111L);
-        visit.setPatientId(patientTO.getId());
-        visit.setDoctorId(doctorTO.getId());
+        visit.setPatientTO(patientTO);
+        visit.setDoctorTO(doctorTO);
         visit.setMedicalTreatments(medicalTreatmentTOs);
         visitTOs.add(visit);
 
