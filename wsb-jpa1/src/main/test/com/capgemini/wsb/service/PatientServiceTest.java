@@ -1,12 +1,13 @@
 package com.capgemini.wsb.service;
 
-import com.capgemini.wsb.persistence.dao.impl.PatientDaoImpl;
+
 import com.capgemini.wsb.service.PatientService;
 import com.capgemini.wsb.dto.*;
-import com.capgemini.wsb.service.impl.PatientServiceImpl;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,11 +15,12 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class PatientServiceTest {
 
     @Autowired
-    private PatientService patientService = new PatientServiceImpl(new PatientDaoImpl());
+    private PatientService patientService;
 
     @Test
     public void FindById() {
