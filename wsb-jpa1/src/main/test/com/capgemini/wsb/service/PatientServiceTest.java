@@ -34,10 +34,32 @@ public class PatientServiceTest {
         patientTO.setFirstName("Al");
         patientTO.setLastName("Le Luja");
         patientTO.setTelephoneNumber("126547777");
-        patientTO.setEmail("PraiseThe@Lord.com");
+        patientTO.setEmail("PraiseTheLord@church.com");
         patientTO.setPatientNumber("111");
         patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
         patientTO.setIsWoman(false);
+
+        AddressTO addressTO = new AddressTO();
+        addressTO.setId(101L);
+        patientTO.setAddressTO(addressTO);
+
+        DoctorTO doctorTO = new DoctorTO();
+        doctorTO.setId(555L);
+
+        List<VisitTO> visitTOs = new ArrayList<>();
+        VisitTO visit = new VisitTO();
+
+        List<MedicalTreatmentTO> medicalTreatmentTOs = new ArrayList<>();
+        MedicalTreatmentTO medicalTreatmentTO = new MedicalTreatmentTO();
+        medicalTreatmentTOs.add(medicalTreatmentTO);
+
+        visit.setId(111L);
+        visit.setPatientId(patientTO.getId());
+        visit.setDoctorId(doctorTO.getId());
+        visit.setMedicalTreatments(medicalTreatmentTOs);
+        visitTOs.add(visit);
+
+        patientTO.setVisitTOs(visitTOs);
 
         // when
         PatientTO savedPatientTO = patientService.addPatient(patientTO);
@@ -60,6 +82,27 @@ public class PatientServiceTest {
         patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
         patientTO.setIsWoman(false);
 
+        AddressTO addressTO = new AddressTO();
+        addressTO.setId(101L);
+        patientTO.setAddressTO(addressTO);
+
+        DoctorTO doctorTO = new DoctorTO();
+        doctorTO.setId(555L);
+
+        List<VisitTO> visitTOs = new ArrayList<>();
+        VisitTO visit = new VisitTO();
+
+        List<MedicalTreatmentTO> medicalTreatmentTOs = new ArrayList<>();
+        MedicalTreatmentTO medicalTreatmentTO = new MedicalTreatmentTO();
+        medicalTreatmentTOs.add(medicalTreatmentTO);
+
+        visit.setId(111L);
+        visit.setPatientId(patientTO.getId());
+        visit.setDoctorId(doctorTO.getId());
+        visit.setMedicalTreatments(medicalTreatmentTOs);
+        visitTOs.add(visit);
+
+        patientTO.setVisitTOs(visitTOs);
         PatientTO savedPatientTO = patientService.addPatient(patientTO);
         Long patientId = savedPatientTO.getId();
 
@@ -77,29 +120,35 @@ public class PatientServiceTest {
         patientTO.setFirstName("Al");
         patientTO.setLastName("Le Luja");
         patientTO.setTelephoneNumber("126547777");
-        patientTO.setEmail("PraiseThe@Lord.com");
+        patientTO.setEmail("PraiseTheLord@church.com");
         patientTO.setPatientNumber("111");
         patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
         patientTO.setIsWoman(false);
 
-        PatientTO savedPatientTO = patientService.addPatient(patientTO);
-        Long patientId = savedPatientTO.getId();
-
         AddressTO addressTO = new AddressTO();
         addressTO.setId(101L);
-
         patientTO.setAddressTO(addressTO);
+
+        DoctorTO doctorTO = new DoctorTO();
+        doctorTO.setId(555L);
 
         List<VisitTO> visitTOs = new ArrayList<>();
         VisitTO visit = new VisitTO();
-        DoctorTO doctorTO = new DoctorTO();
-        doctorTO.setId(500L);
-        visit.setId(101L);
+
+        List<MedicalTreatmentTO> medicalTreatmentTOs = new ArrayList<>();
+        MedicalTreatmentTO medicalTreatmentTO = new MedicalTreatmentTO();
+        medicalTreatmentTOs.add(medicalTreatmentTO);
+
+        visit.setId(111L);
         visit.setPatientId(patientTO.getId());
         visit.setDoctorId(doctorTO.getId());
+        visit.setMedicalTreatments(medicalTreatmentTOs);
         visitTOs.add(visit);
 
         patientTO.setVisitTOs(visitTOs);
+        PatientTO savedPatientTO = patientService.addPatient(patientTO);
+        Long patientId = savedPatientTO.getId();
+
         // when
         List<VisitTO> visits2 = patientService.getAllVisitsForPatient(patientId);
 
