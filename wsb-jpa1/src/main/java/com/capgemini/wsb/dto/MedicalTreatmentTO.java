@@ -8,7 +8,6 @@ public class MedicalTreatmentTO {
 	private Long id;
 	private String description;
 	private TreatmentType type;
-	private VisitTO visitTO;
 
 	public Long getId() { return id; }
 
@@ -22,7 +21,4 @@ public class MedicalTreatmentTO {
 
 	public void setType(TreatmentType type) { this.type = type; }
 
-	public VisitTO getVisitTO() { return visitTO; }
-
-	public void setVisitTO(VisitTO visitTO) { this.visitTO = visitTO; }
 }

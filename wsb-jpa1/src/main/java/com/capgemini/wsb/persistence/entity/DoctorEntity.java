@@ -21,7 +21,7 @@ public class DoctorEntity {
 	@OneToMany(mappedBy = "doctorEntity", cascade = CascadeType.REMOVE)
 	private List<VisitEntity> visitEntities;
 
-	// relacja dwukierunkowa
+	// relacja jednokierunkowa po stronie rodzica (DoctorEntity)
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AddressEntity addressEntity;
 

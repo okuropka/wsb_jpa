@@ -27,15 +27,14 @@ public class VisitEntity {
 	@JoinColumn(name = "DOCTOR_ID")
 	private DoctorEntity doctorEntity;
 
-	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
-	@OneToMany(mappedBy = "visitEntity", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	private List<MedicalTreatmentEntity> medicalTreatmentEntities;
-
 	//relacja dwukierunkowa
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patientEntity;
 
+	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
+	@OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	private MedicalTreatmentEntity medicalTreatmentEntity;
 	public Long getId() { return id; }
 
 	public void setId(Long id) { this.id = id; }
@@ -64,7 +63,7 @@ public class VisitEntity {
 
 	public void setDoctorEntity(DoctorEntity doctorEntity) { this.doctorEntity = doctorEntity; }
 
-	public List<MedicalTreatmentEntity> getMedicalTreatments() { return medicalTreatmentEntities; }
+	public MedicalTreatmentEntity getMedicalTreatment() { return medicalTreatmentEntity; }
 
-	public void setMedicalTreatments(List<MedicalTreatmentEntity> medicalTreatmentEntities) { this.medicalTreatmentEntities = medicalTreatmentEntities; }
+	public void setMedicalTreatment(MedicalTreatmentEntity medicalTreatmentEntity) { this.medicalTreatmentEntity = medicalTreatmentEntity; }
 }

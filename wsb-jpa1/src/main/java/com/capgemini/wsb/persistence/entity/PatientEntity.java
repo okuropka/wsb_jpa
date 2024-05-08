@@ -26,7 +26,7 @@ public class PatientEntity {
 	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
-	// relacja dwukierunkowa
+	// relacja jednokierunkowa po stronie rodzica (PatientEntity)
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AddressEntity addressEntity;
 

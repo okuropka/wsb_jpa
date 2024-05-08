@@ -16,7 +16,6 @@ public final class MedicalTreatmentMapper
         medicalTreatmentTO.setId(medicalTreatmentEntity.getId());
         medicalTreatmentTO.setDescription(medicalTreatmentEntity.getDescription());
         medicalTreatmentTO.setType(medicalTreatmentEntity.getType());
-        medicalTreatmentTO.setVisitTO( VisitMapper.mapToTO(medicalTreatmentEntity.getVisitEntity()) );
         return medicalTreatmentTO;
     }
 
@@ -30,7 +29,6 @@ public final class MedicalTreatmentMapper
         medicalTreatmentEntity.setId(medicalTreatmentTO.getId());
         medicalTreatmentEntity.setDescription(medicalTreatmentTO.getDescription());
         medicalTreatmentEntity.setType(medicalTreatmentTO.getType());
-        medicalTreatmentEntity.setVisitEntity( VisitMapper.mapToEntity(medicalTreatmentTO.getVisitTO()) );
         return medicalTreatmentEntity;
     }
 }

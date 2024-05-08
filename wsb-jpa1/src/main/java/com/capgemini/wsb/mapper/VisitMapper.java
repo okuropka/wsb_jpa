@@ -23,7 +23,7 @@ public final class VisitMapper
         visitTO.setTime(visitEntity.getTime());
         visitTO.setPatientTO( PatientMapper.mapToTO(visitEntity.getPatientEntity()) );
         visitTO.setDoctorTO( DoctorMapper.mapToTO(visitEntity.getDoctorEntity()) );
-        visitTO.setMedicalTreatments(visitEntity.getMedicalTreatments().stream().map(MedicalTreatmentMapper::mapToTO).collect(Collectors.toList()));
+        visitTO.setMedicalTreatment( MedicalTreatmentMapper.mapToTO(visitEntity.getMedicalTreatment()) );
 
         return visitTO;
     }
@@ -38,9 +38,9 @@ public final class VisitMapper
         visitEntity.setId(visitTO.getId());
         visitEntity.setDescription(visitTO.getDescription());
         visitEntity.setTime(visitTO.getTime());
-        visitEntity.setMedicalTreatments(visitTO.getMedicalTreatments().stream().map(MedicalTreatmentMapper::mapToEntity).collect(Collectors.toList()));
         visitEntity.setPatientEntity( PatientMapper.mapToEntity(visitTO.getPatientTO()) );
         visitEntity.setDoctorEntity( DoctorMapper.mapToEntity(visitTO.getDoctorTO()) );
+        visitEntity.setMedicalTreatment( MedicalTreatmentMapper.mapToEntity(visitTO.getMedicalTreatment()) );
 
         return visitEntity;
     }

@@ -23,14 +23,6 @@ public class AddressEntity {
 	@Column(name = "postalCode", nullable = false)
 	private String postalCode;
 
-	// relacja dwukierunkowa
-	@OneToOne(mappedBy = "addressEntity")
-	private DoctorEntity doctorEntity;
-
-	// relacja dwukierunkowa
-	@OneToOne(mappedBy = "addressEntity")
-	private PatientEntity patientEntity;
-
 	public Long getId() {
 		return id;
 	}
@@ -61,11 +53,4 @@ public class AddressEntity {
 
 	public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
 
-	public DoctorEntity getDoctorEntity() { return doctorEntity; }
-
-	public void setDoctorEntity(DoctorEntity doctorEntity) { this.doctorEntity = doctorEntity; }
-
-	public PatientEntity getPatientEntity() { return patientEntity; }
-
-	public void setPatientEntity(PatientEntity patientEntity) { this.patientEntity = patientEntity; }
 }
