@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class DoctorEntity {
 
 	@Id
-	@Column(name = "DOCTOR_ID")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

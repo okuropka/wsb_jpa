@@ -12,5 +12,77 @@
     <inspection_tool class="ExtractMethodRecommender" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="minLength" value="590" />
     </inspection_tool>
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+          <option value="wsb-jpa1" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="org.springframework:spring-beans:5.2.12.RELEASE" />
+          <option value="org.springframework:spring-core:5.2.12.RELEASE" />
+          <option value="ch.qos.logback:logback-classic:1.2.3" />
+          <option value="ch.qos.logback:logback-core:1.2.3" />
+          <option value="mysql:mysql-connector-java:8.0.23" />
+          <option value="com.jayway.jsonpath:json-path:2.4.0" />
+          <option value="net.minidev:json-smart:2.3" />
+          <option value="com.h2database:h2:1.4.197" />
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.11.4" />
+          <option value="org.apache.tomcat.embed:tomcat-embed-core:9.0.41" />
+          <option value="org.apache.tomcat.embed:tomcat-embed-websocket:9.0.41" />
+          <option value="org.glassfish:jakarta.el:3.0.3" />
+          <option value="org.springframework.boot:spring-boot-autoconfigure:2.3.8.RELEASE" />
+          <option value="org.springframework.boot:spring-boot:2.3.8.RELEASE" />
+          <option value="org.springframework:spring-web:5.2.12.RELEASE" />
+          <option value="org.springframework:spring-webmvc:5.2.12.RELEASE" />
+          <option value="org.yaml:snakeyaml:1.26" />
+          <option value="org.springframework:spring-context:5.2.12.RELEASE" />
+          <option value="org.springframework:spring-expression:5.2.12.RELEASE" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

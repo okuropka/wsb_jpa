@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class MedicalTreatmentEntity {
 
 	@Id
-	@Column(name = "MEDICAL_TREATMENT_ID")
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

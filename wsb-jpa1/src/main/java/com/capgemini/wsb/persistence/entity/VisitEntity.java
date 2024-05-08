@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class VisitEntity {
 
 	@Id
-	@Column(name = "VISIT_ID", nullable = false)
+	@Column(name = "id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

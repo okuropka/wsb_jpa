@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class PatientEntity {
 
 	@Id
-	@Column(name = "PATIENT_ID")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
