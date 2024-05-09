@@ -28,6 +28,12 @@ public class PatientServiceTest {
 
         assertEquals("imiePacjenta", patientTO.getFirstName());
         assertEquals("nazwiskoPacjenta", patientTO.getLastName());
+        assertFalse(patientTO.getIsWoman());
+        assertEquals(LocalDate.of(2024,4,5), patientTO.getDateOfBirth());
+        assertEquals("333999666", patientTO.getTelephoneNumber());
+        assertEquals("inspicjentKowalski@pochtah.pl", patientTO.getEmail());
+        assertEquals("12745", patientTO.getPatientNumber());
+
     }
     @Test
     public void AddPatient() {
