@@ -13,7 +13,7 @@ values (1, 'imiePacjenta', 'nazwiskoPacjenta', 0, '2024-04-05', '333999666', 'in
 
 insert into medicalTreatment (id, description, treatment_type)
 values (1, 'amputacja rogoowki', 'RTG'),
-       (2, 'Podanie syropku na kaszel', 'podanie leku');
+       (2, 'Podanie syropku na kaszel', 'USG');
 
 insert into visit (id, description, time, doctor_id, patient_id, medical_treatment_entity_id)
 values (1, 'zabieg', '2024-04-05', 1, 1, 2),
