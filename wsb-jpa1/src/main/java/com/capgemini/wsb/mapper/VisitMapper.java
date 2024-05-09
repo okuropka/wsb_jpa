@@ -1,5 +1,7 @@
 package com.capgemini.wsb.mapper;
 
+import com.capgemini.wsb.dto.BasicDoctorTO;
+import com.capgemini.wsb.dto.BasicPatientTO;
 import com.capgemini.wsb.dto.VisitTO;
 import com.capgemini.wsb.persistence.entity.DoctorEntity;
 import com.capgemini.wsb.persistence.entity.PatientEntity;
@@ -21,8 +23,21 @@ public final class VisitMapper
         visitTO.setId(visitEntity.getId());
         visitTO.setDescription(visitEntity.getDescription());
         visitTO.setTime(visitEntity.getTime());
-        visitTO.setPatientTO( PatientMapper.mapToTO(visitEntity.getPatientEntity()) );
-        visitTO.setDoctorTO( DoctorMapper.mapToTO(visitEntity.getDoctorEntity()) );
+
+        BasicPatientTO tempPat = new BasicPatientTO();
+        tempPat.setId(visitEntity.getPatientEntity().getId());
+        tempPat.setFirstName(visitEntity.getPatientEntity().getFirstName());
+        tempPat.setLastName(visitEntity.getPatientEntity().getLastName());
+        visitTO.setBasicPatientTO(tempPat);
+        //visitTO.setPatientTO( PatientMapper.mapToTO(visitEntity.getPatientEntity()) );
+
+        BasicDoctorTO tempDoc = new BasicDoctorTO();
+        tempDoc.setId(visitEntity.getDoctorEntity().getId());
+        tempDoc.setFirstName(visitEntity.getDoctorEntity().getFirstName());
+        tempDoc.setLastName(visitEntity.getDoctorEntity().getLastName());
+        visitTO.setBasicDoctorTO(tempDoc);
+        //visitTO.setDoctorTO( DoctorMapper.mapToTO(visitEntity.getDoctorEntity()) );
+
         visitTO.setMedicalTreatment( MedicalTreatmentMapper.mapToTO(visitEntity.getMedicalTreatment()) );
 
         return visitTO;

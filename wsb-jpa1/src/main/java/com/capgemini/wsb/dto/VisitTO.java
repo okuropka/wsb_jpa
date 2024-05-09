@@ -10,9 +10,11 @@ public class VisitTO implements Serializable
     private Long id;
     private String description;
     private LocalDateTime time;
-    private DoctorTO doctorTO;
+    private BasicDoctorTO basicDoctorTO;
+    //private DoctorTO doctorTO;
     private MedicalTreatmentTO medicalTreatmentTO;
-    private PatientTO patientTO;
+    private BasicPatientTO basicPatientTO;
+    //private PatientTO patientTO;
 
     public Long getId() {
         return id;
@@ -38,13 +40,13 @@ public class VisitTO implements Serializable
         this.time = time;
     }
 
-    public PatientTO getPatientTO() { return patientTO; }
+    public BasicPatientTO getBasicPatientTO() { return basicPatientTO; }
 
-    public void setPatientTO(PatientTO patientTO) { this.patientTO = patientTO; }
+    public void setBasicPatientTO(BasicPatientTO BasicPatientTO) { this.basicPatientTO = basicPatientTO; }
 
-    public DoctorTO getDoctorTO() { return doctorTO; }
+    public BasicDoctorTO getBasicDoctorTO() { return basicDoctorTO; }
 
-    public void setDoctorTO(DoctorTO doctorTO) { this.doctorTO = doctorTO; }
+    public void setBasicDoctorTO(BasicDoctorTO basicDoctorTO) { this.basicDoctorTO = basicDoctorTO; }
 
     public MedicalTreatmentTO getMedicalTreatment() { return medicalTreatmentTO; }
 
