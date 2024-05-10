@@ -20,13 +20,13 @@ public class PatientDaoTest
 
     @Transactional
     @Test
-    public void testShouldFindPatientById() {
+    public void testShouldFindPatientByLastName() {
         // given
         // when
         PatientEntity patientEntity = patientDao.findOne(1L);
         // then
         assertThat(patientEntity).isNotNull();
-        assertThat(patientEntity.getFirstName()).isEqualTo("imiePacjenta");
+        assertThat(patientEntity.getLastName()).isEqualTo("nazwiskoPacjenta");
     }
     
     @Transactional
