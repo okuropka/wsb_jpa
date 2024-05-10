@@ -21,12 +21,19 @@ public class PatientServiceTest {
 
     @Autowired
     private PatientService patientService;
+    @Autowired
     private DoctorService doctorService;
+    @Autowired
+    private VisitService visitService;
 
     @Test
     public void FindById() {
+        // given
         PatientTO patientTO = patientService.findById(1L);
 
+        // when
+
+        //then
         assertEquals("imiePacjenta", patientTO.getFirstName());
         assertEquals("nazwiskoPacjenta", patientTO.getLastName());
         assertFalse(patientTO.getIsWoman());
@@ -36,6 +43,37 @@ public class PatientServiceTest {
         assertEquals("12745", patientTO.getPatientNumber());
 
     }
+
+    @Test
+    public void RemovePatient() {
+        // given
+        PatientTO patientTO = patientService.findById(1L);
+
+        // when
+        patientService.removePatient(1L);
+        DoctorTO doctorTO = doctorService.findById(1L);
+
+        // then
+        assertNull(patientService.findById(1L));
+        assertNull(visitService.findById(1L));
+        assertNull(visitService.findById(2L));
+        assertNotNull(doctorTO);
+
+    }
+
+    @Test
+    public void GetAllVisitsForPatient(){
+        // given
+        PatientTO patientTO = patientService.findById(1L);
+        // when
+        List<VisitTO> visitTOs = patientService.getAllVisitsForPatient(1L);
+
+        // then
+        assertFalse(patientTO.getVisitTOs().isEmpty()); // czy lista wizyt nie jest pusta?
+        assertEquals(2, visitTOs.size()); // czy są dwie wizyty dla tego pacjenta?
+
+    }
+
     /*
     @Test
     public void AddPatient() {
@@ -70,34 +108,5 @@ public class PatientServiceTest {
         assertEquals(patientTO.getLastName(), savedPatientTO.getLastName());
     }
     */
-    @Test
-    public void RemovePatient() {
-        // given
-        PatientTO patientTO = patientService.findById(1L);
-
-
-        PatientTO savedPatientTO = patientService.addPatient(patientTO);
-        Long patientId = savedPatientTO.getId();
-
-        // when
-        patientService.removePatient(patientId);
-
-        // then
-        assertNull(patientService.findById(patientId));
-
-    }
-
-    @Test
-    public void GetAllVisitsForPatient(){
-        // given
-        PatientTO patientTO = patientService.findById(1L);
-        // when
-        List<VisitTO> visits = patientService.getAllVisitsForPatient(1L);
-
-        // then
-        assertFalse(patientTO.getVisitTOs().isEmpty()); // czy lista wizyt nie jest pusta?
-        assertEquals(2, visits.size()); // czy jest tylko jedna wizyta dla tego pacjenta?
-
-    }
 
 }

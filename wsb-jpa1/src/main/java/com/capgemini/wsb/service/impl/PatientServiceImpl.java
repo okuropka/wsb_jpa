@@ -54,9 +54,8 @@ public class PatientServiceImpl implements PatientService
     public List<VisitTO> getAllVisitsForPatient(Long patientId) {
         PatientEntity patientEntity = patientDao.findOne(patientId);
         List<VisitEntity> visitEntities = patientEntity.getVisitEntities();
-        List<VisitTO> out = visitEntities.stream()
-                .map(VisitMapper::mapToTO)
-                .collect(Collectors.toList());
-        return out;
+        return visitEntities.stream()
+                            .map(VisitMapper::mapToTO)
+                            .collect(Collectors.toList());
     }
 }

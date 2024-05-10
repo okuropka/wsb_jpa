@@ -17,5 +17,5 @@ values (1, 'amputacja rogoowki', 'RTG'),
 
 insert into visit (id, description, time, doctor_id, patient_id, medical_treatment_entity_id)
 values (1, 'zabieg', '2024-04-05', 1, 1, 2),
-       (2, 'operacja', '2024-04-07', 1, 2, 1),
-       (3, 'zabieg', '2022-04-05', 1, 1, 2);
+       (2, 'operacja', '2022-04-06', 1, 1, 1),
+       (3, 'zabieg', '2024-04-07', 1, 2, 2);
