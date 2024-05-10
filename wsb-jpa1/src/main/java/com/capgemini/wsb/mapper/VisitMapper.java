@@ -53,8 +53,21 @@ public final class VisitMapper
         visitEntity.setId(visitTO.getId());
         visitEntity.setDescription(visitTO.getDescription());
         visitEntity.setTime(visitTO.getTime());
-        visitEntity.setPatientEntity( PatientMapper.mapToEntity(visitTO.getPatientTO()) );
-        visitEntity.setDoctorEntity( DoctorMapper.mapToEntity(visitTO.getDoctorTO()) );
+
+        PatientEntity tempPat = new PatientEntity();
+        tempPat.setId(visitTO.getBasicPatientTO().getId());
+        tempPat.setFirstName(visitTO.getBasicPatientTO().getFirstName());
+        tempPat.setLastName(visitTO.getBasicPatientTO().getLastName());
+        visitEntity.setPatientEntity(tempPat);
+        //visitEntity.setPatientEntity( PatientMapper.mapToEntity(visitTO.getPatientTO()) );
+
+        DoctorEntity tempDoc = new DoctorEntity();
+        tempDoc.setId(visitTO.getBasicDoctorTO().getId());
+        tempDoc.setFirstName(visitTO.getBasicDoctorTO().getFirstName());
+        tempDoc.setLastName(visitTO.getBasicDoctorTO().getLastName());
+        visitEntity.setDoctorEntity(tempDoc);
+        //visitEntity.setDoctorEntity( DoctorMapper.mapToEntity(visitTO.getDoctorTO()) );
+
         visitEntity.setMedicalTreatment( MedicalTreatmentMapper.mapToEntity(visitTO.getMedicalTreatment()) );
 
         return visitEntity;

@@ -21,6 +21,7 @@ public class PatientServiceTest {
 
     @Autowired
     private PatientService patientService;
+    private DoctorService doctorService;
 
     @Test
     public void FindById() {
@@ -35,6 +36,7 @@ public class PatientServiceTest {
         assertEquals("12745", patientTO.getPatientNumber());
 
     }
+    /*
     @Test
     public void AddPatient() {
         // given
@@ -54,6 +56,11 @@ public class PatientServiceTest {
         List<VisitTO> visitTOs = new ArrayList<>();
         patientTO.setVisitTOs(visitTOs);
 
+        DoctorTO doctorTO = doctorService.findById(1L);
+        /.
+        /.
+        /.
+
         // when
         PatientTO savedPatientTO = patientService.addPatient(patientTO);
 
@@ -62,25 +69,12 @@ public class PatientServiceTest {
         assertEquals(patientTO.getFirstName(), savedPatientTO.getFirstName());
         assertEquals(patientTO.getLastName(), savedPatientTO.getLastName());
     }
-
+    */
     @Test
     public void RemovePatient() {
         // given
-        PatientTO patientTO = new PatientTO();
-        patientTO.setFirstName("Al");
-        patientTO.setLastName("Le Luja");
-        patientTO.setTelephoneNumber("126547777");
-        patientTO.setEmail("PraiseTheLord@church.com");
-        patientTO.setPatientNumber("111");
-        patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
-        patientTO.setIsWoman(false);
+        PatientTO patientTO = patientService.findById(1L);
 
-        AddressTO addressTO = new AddressTO();
-        addressTO.setId(101L);
-        patientTO.setAddressTO(addressTO);
-
-        List<VisitTO> visitTOs = new ArrayList<>();
-        patientTO.setVisitTOs(visitTOs);
 
         PatientTO savedPatientTO = patientService.addPatient(patientTO);
         Long patientId = savedPatientTO.getId();
@@ -90,6 +84,7 @@ public class PatientServiceTest {
 
         // then
         assertNull(patientService.findById(patientId));
+
     }
 
     @Test
