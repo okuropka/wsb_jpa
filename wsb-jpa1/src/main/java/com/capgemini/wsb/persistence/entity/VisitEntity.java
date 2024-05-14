@@ -23,18 +23,19 @@ public class VisitEntity {
 	private LocalDateTime time;
 
 	// relacja dwukierunkowa
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne()
 	@JoinColumn(name = "DOCTOR_ID")
 	private DoctorEntity doctorEntity;
 
 	//relacja dwukierunkowa
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patientEntity;
 
 	// relacja jednokierunkowa po stronie rodzica (VisitEntity)
-	@OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private MedicalTreatmentEntity medicalTreatmentEntity;
+
 	public Long getId() { return id; }
 
 	public void setId(Long id) { this.id = id; }
