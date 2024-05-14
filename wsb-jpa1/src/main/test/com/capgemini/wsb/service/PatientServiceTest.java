@@ -1,7 +1,6 @@
 package com.capgemini.wsb.service;
 
 
-import com.capgemini.wsb.service.PatientService;
 import com.capgemini.wsb.dto.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -37,7 +35,8 @@ public class PatientServiceTest {
         assertEquals("imiePacjenta", patientTO.getFirstName());
         assertEquals("nazwiskoPacjenta", patientTO.getLastName());
         assertFalse(patientTO.getIsWoman());
-        assertEquals(LocalDate.of(2024,4,5), patientTO.getDateOfBirth());
+        assertEquals(patientTO.getHeight(), 185);
+        assertEquals(patientTO.getDateOfBirth(), LocalDate.of(2024,4,5));
         assertEquals("333999666", patientTO.getTelephoneNumber());
         assertEquals("inspicjentKowalski@pochtah.pl", patientTO.getEmail());
         assertEquals("12745", patientTO.getPatientNumber());
