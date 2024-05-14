@@ -18,7 +18,7 @@ public class DoctorEntity {
 	private Long id;
 
 	//relacja dwukierunkowa
-	@OneToMany(mappedBy = "doctorEntity", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "doctorEntity")
 	private List<VisitEntity> visitEntities;
 
 	// relacja jednokierunkowa po stronie rodzica (DoctorEntity)
