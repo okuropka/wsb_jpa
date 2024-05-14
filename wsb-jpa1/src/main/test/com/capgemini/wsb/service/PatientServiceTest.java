@@ -73,3 +73,5 @@ public class PatientServiceTest {
 
     }
 }
+
+// org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\vdi-student\IdeaProjects\wsb_jpa\out\test\wsb_jpa\com\capgemini\wsb\service\PatientServiceTest.class]; nested exception is org.springframework.core.NestedIOException: ASM ClassReader failed to parse class file - probably due to a new Java class file version that isn't supported yet: file [C:\Users\vdi-student\IdeaProjects\wsb_jpa\out\test\wsb_jpa\com\capgemini\wsb\service\PatientServiceTest.class]; nested exception is java.lang.IllegalArgumentException: Unsupported class file major version 61
