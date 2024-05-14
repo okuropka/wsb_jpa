@@ -17,6 +17,7 @@ public class PatientTO implements Serializable
     private String email;
     private String patientNumber;
     private LocalDate dateOfBirth;
+    private int height;
 
     public Long getId() { return id; }
 
@@ -33,6 +34,10 @@ public class PatientTO implements Serializable
     public boolean getIsWoman() { return isWoman; }
 
     public void setIsWoman(boolean isWoman) {this.isWoman = isWoman;}
+
+    public int getHeight() { return height;}
+
+    public void setHeight(int height) {this.height = height;}
 
     public String getTelephoneNumber() { return telephoneNumber; }
 

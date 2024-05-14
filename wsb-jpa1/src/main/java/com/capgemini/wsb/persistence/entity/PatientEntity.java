@@ -23,6 +23,9 @@ public class PatientEntity {
 	@Column(name = "IS_WOMAN", nullable = false)
 	private boolean isWoman;
 
+	@Column(name = "HEIGHT_cm")
+	private int height;
+
 	@Column(name = "TELEPHONE_NUMBER", nullable = false)
 	private String telephoneNumber;
 
@@ -71,6 +74,10 @@ public class PatientEntity {
 	public boolean getIsWoman() { return isWoman; }
 
 	public void setIsWoman(boolean isWoman) {this.isWoman = isWoman;}
+
+	public int getHeight() { return height;}
+
+	public void setHeight(int height) {this.height = height;}
 
 	public String getTelephoneNumber() {
 		return telephoneNumber;

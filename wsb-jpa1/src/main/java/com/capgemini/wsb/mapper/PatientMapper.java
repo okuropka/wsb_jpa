@@ -25,6 +25,7 @@ public final class PatientMapper
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setIsWoman(patientEntity.getIsWoman());
+        patientTO.setHeight(patientEntity.getHeight());
         patientTO.setAddressTO( AddressMapper.mapToTO(patientEntity.getAddressEntity()) );
         patientTO.setVisitTOs(patientEntity.getVisitEntities().stream().map(VisitMapper::mapToTO).collect(Collectors.toList()));
 
@@ -45,6 +46,7 @@ public final class PatientMapper
         patientEntity.setPatientNumber(patientTO.getPatientNumber());
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
         patientEntity.setIsWoman(patientTO.getIsWoman());
+        patientEntity.setHeight(patientTO.getHeight());
         patientEntity.setAddressEntity( AddressMapper.mapToEntity(patientTO.getAddressTO()) );
         patientEntity.setVisitEntities(patientTO.getVisitTOs().stream().map(VisitMapper::mapToEntity).collect(Collectors.toList()));
 

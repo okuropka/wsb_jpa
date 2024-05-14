@@ -9,7 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,35 +22,43 @@ public class PatientDaoTest
 
     @Transactional
     @Test
-    public void testShouldFindPatientByLastName() {
+    public void testShouldFindPatientsByLastName() {
         // given
         // when
-        PatientEntity patientEntity = patientDao.findOne(1L);
+        int testPatientsListSize = patientDao.findByLastName("nazwiskoPacjenta").size();
         // then
-        assertThat(patientEntity).isNotNull();
-        assertThat(patientEntity.getLastName()).isEqualTo("nazwiskoPacjenta");
+        assertEquals(testPatientsListSize, 2);
     }
     
     @Transactional
     @Test
     public void testFindPatientsWithMoreVisitsThan() {
         // given
-
+        int nVisits = 2;
         // when
-        PatientEntity patientEntity = patientDao.findOne(1L);
+        List<PatientEntity> testListOfPatientsWithEnoughVisits = patientDao.findPatientsWithMoreVisitsThan(nVisits);
         // then
-
+        assertNotNull(testListOfPatientsWithEnoughVisits);
+        assertTrue(testListOfPatientsWithEnoughVisits.get(0).getVisitEntities().size() >= nVisits);
     }
 
     @Transactional
     @Test
-    public void testFindFemalePatients() {
+    public void testFindPatientsHigherThan() {
         // given
-
+        int height1 = 169;  // powinien zwrocic 2 pacjentow
+        int height2 = 181;  // powinien zwrocic 1 pacjenta
         // when
-        PatientEntity patientEntity = patientDao.findOne(1L);
+        List<PatientEntity> testListOfHigherPatients1 = patientDao.findPatientsHigherThan(height1);
+        List<PatientEntity> testListOfHigherPatients2 = patientDao.findPatientsHigherThan(height2);
         // then
-
+        assertNotNull(testListOfHigherPatients1);
+        assertNotNull(testListOfHigherPatients2);
+        assertEquals(2, testListOfHigherPatients1.size());
+        assertTrue(testListOfHigherPatients1.get(0).getHeight()>height1);
+        assertTrue(testListOfHigherPatients1.get(1).getHeight()>height1);
+        assertEquals(1, testListOfHigherPatients1.size());
+        assertTrue(testListOfHigherPatients2.get(0).getHeight()>height2);
     }
 
 
