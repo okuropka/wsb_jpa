@@ -10,7 +10,7 @@ values (1, 'imieDoktora', 'nazwiskoDoktora', '666333999', 'doktorDoktor@przychod
 insert into patient (id, first_name, last_name, is_woman, height_cm, date_of_birth, telephone_number, email, patient_number, address_entity_id)
 values (1, 'imiePacjenta', 'nazwiskoPacjenta', 0, 185, '2024-04-05', '333999666', 'inspicjentKowalski@pochtah.pl', '12745', 1),
        (2, 'imiePacjentki', 'nazwiskoPacjenta2', 1, 160, '1999-04-05', '999333666', 'pacjent2@200ml.pl', '11111', 3),
-       (3, 'imiePacjentki2', 'nazwiskoPacjenta', 1, 170, '2024-04-05', '333999666', 'halinaMalina@pi.com', '88888', 1)
+       (3, 'imiePacjentki2', 'nazwiskoPacjenta', 1, 170, '2024-04-05', '333999666', 'halinaMalina@pi.com', '88888', 1);
 
 insert into medicalTreatment (id, description, treatment_type)
 values (1, 'amputacja rogoowki', 'RTG'),

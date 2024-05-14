@@ -69,44 +69,8 @@ public class PatientServiceTest {
         List<VisitTO> visitTOs = patientService.getAllVisitsForPatient(1L);
 
         // then
-        assertFalse(patientTO.getVisitTOs().isEmpty()); // czy lista wizyt nie jest pusta?
-        assertEquals(2, visitTOs.size()); // czy są dwie wizyty dla tego pacjenta?
+        assertFalse(patientTO.getVisitTOs().isEmpty());
+        assertEquals(2, visitTOs.size());
 
     }
-
-    /*
-    @Test
-    public void AddPatient() {
-        // given
-        PatientTO patientTO = new PatientTO();
-        patientTO.setFirstName("Al");
-        patientTO.setLastName("Le Luja");
-        patientTO.setTelephoneNumber("126547777");
-        patientTO.setEmail("PraiseTheLord@church.com");
-        patientTO.setPatientNumber("111");
-        patientTO.setDateOfBirth(LocalDate.of(1960, 12, 12));
-        patientTO.setIsWoman(false);
-
-        AddressTO addressTO = new AddressTO();
-        addressTO.setId(101L);
-        patientTO.setAddressTO(addressTO);
-
-        List<VisitTO> visitTOs = new ArrayList<>();
-        patientTO.setVisitTOs(visitTOs);
-
-        DoctorTO doctorTO = doctorService.findById(1L);
-        /.
-        /.
-        /.
-
-        // when
-        PatientTO savedPatientTO = patientService.addPatient(patientTO);
-
-        // then
-        assertNotNull(savedPatientTO.getId());
-        assertEquals(patientTO.getFirstName(), savedPatientTO.getFirstName());
-        assertEquals(patientTO.getLastName(), savedPatientTO.getLastName());
-    }
-    */
-
 }
