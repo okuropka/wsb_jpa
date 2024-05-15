@@ -42,7 +42,7 @@ public class VisitTO implements Serializable
 
     public BasicPatientTO getBasicPatientTO() { return basicPatientTO; }
 
-    public void setBasicPatientTO(BasicPatientTO BasicPatientTO) { this.basicPatientTO = basicPatientTO; }
+    public void setBasicPatientTO(BasicPatientTO basicPatientTO) { this.basicPatientTO = basicPatientTO; }
 
     public BasicDoctorTO getBasicDoctorTO() { return basicDoctorTO; }
 

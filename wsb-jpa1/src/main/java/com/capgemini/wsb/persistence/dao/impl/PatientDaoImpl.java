@@ -14,36 +14,17 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         return entityManager.createQuery("select patient from PatientEntity patientEntity where patient.lastName like :lastName", PatientEntity.class )
                             .setParameter("lastName", lastName)
                             .getResultList();
-        /*
-        return entityManager.createQuery("select patient from PatientEntity patient"+
-                        " where patient.lastName like :lastName", PatientEntity.class)
-                .setParameter("lastName", lastName)
-                .getResultList();
-
-         */
     }
 
     public List<PatientEntity> findPatientsWithMoreVisitsThan(int nVisits){
         return entityManager.createQuery("select patient from PatientEntity patientEntity where size(patientEntity.visitEntities > :numVisits", PatientEntity.class)
                             .setParameter("numVisits", nVisits)
                             .getResultList();
-        /*
-        return entityManager.createQuery("select patient from PatientEntity patient" +
-                                  " where size(patient.visits) > :minVisits", PatientEntity.class)
-                .setParameter("minVisits", numberOfVisits)
-                .getResultList();
-         */
     }
 
     public List<PatientEntity> findPatientsHigherThan(int height){
         return entityManager.createQuery("select patient from PatientEntity patientEntity where patient.height > :h", PatientEntity.class)
                 .setParameter("h", height)
                 .getResultList();
-        /*
-        return entityManager.createQuery("select patient from PatientEntity patient "+
-                                        " where patient.dateOfBirth < :birthDateThreshold", PatientEntity.class)
-                .setParameter("birthDateThreshold", birthDateThreshold)
-                .getResultList();
-         */
     }
 }
