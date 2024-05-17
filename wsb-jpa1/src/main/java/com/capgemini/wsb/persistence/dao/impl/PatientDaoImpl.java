@@ -11,19 +11,19 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
 {
     @Override
     public List<PatientEntity> findByLastName(String lastName){
-        return entityManager.createQuery("select patient from PatientEntity patientEntity where patient.lastName like :lastName", PatientEntity.class )
+        return entityManager.createQuery("select patient from PatientEntity patient where patient.lastName like :lastName", PatientEntity.class )
                             .setParameter("lastName", lastName)
                             .getResultList();
     }
 
     public List<PatientEntity> findPatientsWithMoreVisitsThan(int nVisits){
-        return entityManager.createQuery("select patient from PatientEntity patientEntity where size(patientEntity.visitEntities > :numVisits", PatientEntity.class)
+        return entityManager.createQuery("select patient from PatientEntity patient where size(patient.visitEntities) > :numVisits", PatientEntity.class)
                             .setParameter("numVisits", nVisits)
                             .getResultList();
     }
 
     public List<PatientEntity> findPatientsHigherThan(int height){
-        return entityManager.createQuery("select patient from PatientEntity patientEntity where patient.height > :h", PatientEntity.class)
+        return entityManager.createQuery("select patient from PatientEntity patient where patient.height > :h", PatientEntity.class)
                 .setParameter("h", height)
                 .getResultList();
     }

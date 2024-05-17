@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -28,7 +29,6 @@ public class PatientServiceTest {
     public void FindById() {
         // given
         PatientTO patientTO = patientService.findById(1L);
-
         // when
 
         //then
@@ -46,10 +46,10 @@ public class PatientServiceTest {
     @Test
     public void RemovePatient() {
         // given
-        PatientTO patientTO = patientService.findById(1L);
-
+        //PatientTO patientTO = patientService.findById(1L);
+        long id = 1L;
         // when
-        patientService.removePatient(1L);
+        patientService.removePatient(id);
         DoctorTO doctorTO = doctorService.findById(1L);
 
         // then
@@ -72,6 +72,24 @@ public class PatientServiceTest {
         assertEquals(2, visitTOs.size());
 
     }
-}
 
-// org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\vdi-student\IdeaProjects\wsb_jpa\out\test\wsb_jpa\com\capgemini\wsb\service\PatientServiceTest.class]; nested exception is org.springframework.core.NestedIOException: ASM ClassReader failed to parse class file - probably due to a new Java class file version that isn't supported yet: file [C:\Users\vdi-student\IdeaProjects\wsb_jpa\out\test\wsb_jpa\com\capgemini\wsb\service\PatientServiceTest.class]; nested exception is java.lang.IllegalArgumentException: Unsupported class file major version 61
+    @Test
+    public void AddPatient() {
+        // given
+        PatientTO patientTO = new PatientTO();
+        patientTO.setFirstName("Jane");
+        patientTO.setLastName("Doe");
+        patientTO.setTelephoneNumber("123456789");
+        patientTO.setEmail("john.doe@example.com");
+        patientTO.setPatientNumber("99999");
+        patientTO.setDateOfBirth(LocalDate.of(1990, 1, 1));
+        patientTO.setIsWoman(true);
+        patientTO.setHeight(169);
+        List<VisitTO> temp = new ArrayList<>();
+        patientTO.setVisitTOs(temp);
+
+        PatientTO savedPatientTO = patientService.addPatient(patientTO);
+
+        assertNotNull(savedPatientTO.getId());
+    }
+}
