@@ -46,15 +46,17 @@ public class PatientServiceTest {
     @Test
     public void RemovePatient() {
         // given
-        //PatientTO patientTO = patientService.findById(1L);
         long id = 1L;
+        PatientTO patientTO = patientService.findById(id);
+        // assertNotNull(patientTO.getId());
         // when
-        patientService.removePatient(id);
-        DoctorTO doctorTO = doctorService.findById(1L);
+        //patientService.removePatient(patientTO.getId());
+        patientService.removePatient(id);   // PUBLIC.VISIT FOREIGN KEY(MEDICAL_TREATMENT_ENTITY_ID) REFERENCES PUBLIC.MEDICALTREATMENT(ID)
+        DoctorTO doctorTO = doctorService.findById(id);
 
         // then
-        assertNull(patientService.findById(1L));
-        assertNull(visitService.findById(1L));
+        assertNull(patientService.findById(id));
+        assertNull(visitService.findById(id));
         assertNull(visitService.findById(2L));
         assertNotNull(doctorTO);
 
