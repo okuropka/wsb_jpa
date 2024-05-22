@@ -15,12 +15,12 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class PatientDaoTest
 {
     @Autowired
     private PatientDao patientDao;
 
-    @Transactional
     @Test
     public void testShouldFindPatientsByLastName() {
         // given
@@ -29,8 +29,7 @@ public class PatientDaoTest
         // then
         assertEquals(testPatientsListSize, 2);
     }
-    
-    @Transactional
+
     @Test
     public void testFindPatientsWithMoreVisitsThan() {
         // given
@@ -43,7 +42,6 @@ public class PatientDaoTest
         assertTrue(testListOfPatientsWithEnoughVisits.get(0).getVisitEntities().size() > nVisits);
     }
 
-    @Transactional
     @Test
     public void testFindPatientsHigherThan() {
         // given

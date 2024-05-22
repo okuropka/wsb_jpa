@@ -36,8 +36,8 @@ public class PatientServiceImpl implements PatientService
     @Override
     public PatientTO addPatient(PatientTO patientTO) {
         PatientEntity patientEntity = PatientMapper.mapToEntity(patientTO);
-        patientDao.save(patientEntity);
-        return PatientMapper.mapToTO(patientEntity);
+        PatientEntity savedPatientEntity = patientDao.save(patientEntity);
+        return PatientMapper.mapToTO(savedPatientEntity);
     }
     @Override
     public void removePatient(long id){
